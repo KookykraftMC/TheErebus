@@ -33,8 +33,7 @@ public abstract class BiomeDecoratorBaseErebus {
 	}
 
 	public final void decorate(World world, Random rand, int x, int z) {
-		if (isDecorating)
-			throw new RuntimeException("Already decorating Erebus!");
+		if (isDecorating) return;
 		isDecorating = true;
 		this.world = world;
 		this.rand = rand;
