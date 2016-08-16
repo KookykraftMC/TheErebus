@@ -200,7 +200,7 @@ public class BiomeDecoratorElysianFields extends BiomeDecoratorBaseErebus {
 	 * SUB-BIOME - ELYSIAN FOREST
 	 */
 
-	public class BiomeDecoratorElysianForest extends BiomeDecoratorElysianFields {
+	public static class BiomeDecoratorElysianForest extends BiomeDecoratorElysianFields {
 		private final WorldGenerator genOakTree = new WorldGenTrees(false, 5, 0, 0, false);
 		private final WorldGenerator genBirchTree = new WorldGenTrees(false, 5, 2, 2, false);
 		private boolean isDecorating = false;
