@@ -32,6 +32,8 @@ public class BiomeDecoratorSubterraneanSavannah extends BiomeDecoratorBaseErebus
 	private final WorldGenerator genTreeAsper = new WorldGenAsperTree();
 	private final WorldGenerator genTreeBaobab = new WorldGenBaobabTree();
 
+	private boolean isDecorating = false;
+
 	@Override
 	public void populate() {
 
@@ -60,6 +62,10 @@ public class BiomeDecoratorSubterraneanSavannah extends BiomeDecoratorBaseErebus
 
 	@Override
 	public void decorate() {
+
+		if (isDecorating) return;
+		isDecorating = true;
+
 		xx = x + 16;
 		yy = 16;
 		zz = z + 16;
@@ -144,6 +150,9 @@ public class BiomeDecoratorSubterraneanSavannah extends BiomeDecoratorBaseErebus
 				world.setBlock(xx, yy + 1, zz, Blocks.double_plant, 10, 2);
 			}
 		}
+
+		isDecorating = false;
+
 	}
 
 	@Override

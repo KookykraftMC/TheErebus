@@ -20,8 +20,14 @@ public class BiomeDecoratorUlteriorOutback extends BiomeDecoratorBaseErebus {
 	private final WorldGenerator genTreeEucalyptus = new WorldGenEucalyptusTree();
 	private final WorldGenerator genTreeSap = new WorldGenSapTree();
 
+	private boolean isDecorating = false;
+
 	@Override
 	public void decorate() {
+
+		if (isDecorating) return;
+		isDecorating = true;
+
 		for (attempt = 0; attempt < 240; attempt++) {
 			xx = x + offsetXZ();
 			zz = z + offsetXZ();
@@ -110,6 +116,8 @@ public class BiomeDecoratorUlteriorOutback extends BiomeDecoratorBaseErebus {
 						break;
 				}
 			}
+
+		isDecorating = false;
 	}
 
 	@Override

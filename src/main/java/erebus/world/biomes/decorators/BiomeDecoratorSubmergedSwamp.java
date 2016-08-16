@@ -41,6 +41,8 @@ public class BiomeDecoratorSubmergedSwamp extends BiomeDecoratorBaseErebus {
 	private final WorldGenReed genReed = new WorldGenReed();
 	private final WorldGenVinesErebus genVines = new WorldGenVinesErebus(35, 5);
 
+	private boolean isDecorating = false;
+
 	@Override
 	protected void populate() {
 		for (attempt = 0; attempt < 800; attempt++) {
@@ -57,6 +59,9 @@ public class BiomeDecoratorSubmergedSwamp extends BiomeDecoratorBaseErebus {
 
 	@Override
 	public void decorate() {
+
+		if (isDecorating) return;
+		isDecorating = true;
 
 		if (rand.nextInt(34) == 0)
 			for (int attempt = 0; attempt < 15; attempt++)
@@ -241,6 +246,8 @@ public class BiomeDecoratorSubmergedSwamp extends BiomeDecoratorBaseErebus {
 			if (checkSurface(SurfaceType.GRASS, xx, yy, zz))
 				new WorldGenRottenLogs(length, baseRadius, direction).generate(world, rand, xx, yy, zz);
 		}
+
+		isDecorating = false;
 	}
 
 	@Override

@@ -25,6 +25,8 @@ public class BiomeDecoratorElysianFields extends BiomeDecoratorBaseErebus {
 
 	protected boolean generateFlowers = true;
 
+	private boolean isDecorating = false;
+
 	@Override
 	protected void populate() {
 		if (rand.nextInt(3) == 0)
@@ -44,6 +46,8 @@ public class BiomeDecoratorElysianFields extends BiomeDecoratorBaseErebus {
 
 	@Override
 	public void decorate() {
+		if (isDecorating) return;
+		isDecorating = true;
 		for (attempt = 0; attempt < 105; attempt++) {
 			xx = x + offsetXZ();
 			zz = z + offsetXZ();
@@ -151,6 +155,7 @@ public class BiomeDecoratorElysianFields extends BiomeDecoratorBaseErebus {
 				world.setBlock(xx, yy + 1, zz, ModBlocks.waterFlower, 8, 2);
 			}
 		}
+		isDecorating = false;
 	}
 
 	@Override
@@ -195,9 +200,10 @@ public class BiomeDecoratorElysianFields extends BiomeDecoratorBaseErebus {
 	 * SUB-BIOME - ELYSIAN FOREST
 	 */
 
-	public static class BiomeDecoratorElysianForest extends BiomeDecoratorElysianFields {
+	public class BiomeDecoratorElysianForest extends BiomeDecoratorElysianFields {
 		private final WorldGenerator genOakTree = new WorldGenTrees(false, 5, 0, 0, false);
 		private final WorldGenerator genBirchTree = new WorldGenTrees(false, 5, 2, 2, false);
+		private boolean isDecorating = false;
 
 		public BiomeDecoratorElysianForest() {
 			generateFlowers = false;

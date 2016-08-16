@@ -57,6 +57,8 @@ public class BiomeDecoratorUndergroundJungle extends BiomeDecoratorBaseErebus {
 	private final WorldGenerator genTurnips = new WorldGenTurnips();
 	private final WorldGenerator genMelons = new WorldGenMelon();
 
+	private boolean isDecorating = false;
+
 	@Override
 	protected void populate() {
 		for (attempt = 0; attempt < 35; attempt++) {
@@ -73,6 +75,10 @@ public class BiomeDecoratorUndergroundJungle extends BiomeDecoratorBaseErebus {
 
 	@Override
 	protected void decorate() {
+
+		if (isDecorating) return;
+		isDecorating = true;
+
 		if (rand.nextInt(3) == 0)
 			for (attempt = 0; attempt < 5; attempt++)
 				if (genAmberUmberstone.generate(world, rand, x + offsetXZ(), rand.nextInt(120), z + offsetXZ()))
@@ -252,6 +258,8 @@ public class BiomeDecoratorUndergroundJungle extends BiomeDecoratorBaseErebus {
 				if (checkSurface(SurfaceType.GRASS, xx, yy, zz))
 					genMelons.generate(world, rand, xx, yy, zz);
 			}
+
+			isDecorating = false;
 	}
 
 	@Override

@@ -16,6 +16,8 @@ public class BiomeDecoratorVolcanicDesert extends BiomeDecoratorBaseErebus {
 	private final WorldGenLakes genLavaLakes = new WorldGenLakes(Blocks.flowing_lava);
 	private final WorldGenScorchedWood genScorchedWood = new WorldGenScorchedWood();
 	protected final WorldGenPricklyPairPatch genPricklyPair = new WorldGenPricklyPairPatch();
+
+	private boolean isDecorating = false;
 	
 	@Override
 	public void populate() {
@@ -31,6 +33,8 @@ public class BiomeDecoratorVolcanicDesert extends BiomeDecoratorBaseErebus {
 
 	@Override
 	public void decorate() {
+		if (isDecorating) return;
+		isDecorating = true;
 		for (attempt = 0; attempt < 10; attempt++) {
 			xx = x + offsetXZ();
 			yy = rand.nextInt(120);
@@ -73,6 +77,7 @@ public class BiomeDecoratorVolcanicDesert extends BiomeDecoratorBaseErebus {
 			for (int attempt = 0; attempt < 15; attempt++)
 				if (genAntlionLair.generate(world, rand, x + 5 + rand.nextInt(6) + 8, 15 + rand.nextInt(35), z + 5 + rand.nextInt(6) + 8))
 					break;
+		isDecorating = false;
 	}
 
 	@Override

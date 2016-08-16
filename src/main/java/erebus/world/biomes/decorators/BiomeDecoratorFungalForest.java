@@ -25,10 +25,15 @@ public class BiomeDecoratorFungalForest extends BiomeDecoratorBaseErebus {
 	private final WorldGenBigMushroom genBigMushroomBrown = new WorldGenBigMushroom(1);
 	private final WorldGenGiantMushrooms genGiantMushrooms = new WorldGenGiantMushrooms();
 
+	private boolean isDecorating = false;
+
 	public static final Block[] mushrooms = { ModBlocks.dutchCap, ModBlocks.kaizersFinger, ModBlocks.sarcasticCzech, ModBlocks.grandmasShoes, ModBlocks.darkCapped };
 
 	@Override
 	public void decorate() {
+
+		if (isDecorating) return;
+		isDecorating = true;
 
 		for (attempt = 0; attempt < 10; attempt++) {
 			int length = rand.nextInt(5) + 4;
@@ -174,6 +179,7 @@ public class BiomeDecoratorFungalForest extends BiomeDecoratorBaseErebus {
 					world.setBlock(xx, yy - 1, zz, ModBlocks.glowshroomStalkMain, 4, 2);
 			}
 		}
+		isDecorating = false;
 	}
 
 	@Override
